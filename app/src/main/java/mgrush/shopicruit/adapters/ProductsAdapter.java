@@ -29,7 +29,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     private List<Product> products;
     private ProductClickListener productClickListener;
 
-    public ProductsAdapter(Context context, List<Product> products,
+    public ProductsAdapter(@NonNull Context context, @NonNull List<Product> products,
                            @NonNull ProductClickListener productClickListener) {
         this.context = context;
         this.products = products;

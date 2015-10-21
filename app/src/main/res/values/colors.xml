@@ -8,4 +8,7 @@
     <color name="secondary_text">#727272</color>
     <color name="icons">#FFFFFF</color>
     <color name="divider">#B6B6B6</color>
+
+    <color name="product_available">#23da2c</color>
+    <color name="product_unavailable">#ff362f</color>
 </resources>

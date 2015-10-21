@@ -92,7 +92,9 @@ public class ProductsFragment extends Fragment implements ProductsView, ProductC
     @Override
     public void onClickedProduct(View view, Product product) {
         Fragment productViewFragment = ProductViewFragment.createFragment(product);
-        setUpTransition(productViewFragment);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setUpTransition(productViewFragment);
+        }
         replaceFragment(productViewFragment);
     }
 
