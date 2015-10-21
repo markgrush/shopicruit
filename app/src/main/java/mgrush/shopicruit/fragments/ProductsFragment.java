@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +17,13 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import mgrush.shopicruit.R;
 import mgrush.shopicruit.adapters.ProductsAdapter;
+import mgrush.shopicruit.listeners.ProductClickListener;
 import mgrush.shopicruit.model.Product;
 import mgrush.shopicruit.presenters.ProductsPresenter;
 import mgrush.shopicruit.presenters.ProductsPresenterImpl;
 import mgrush.shopicruit.view.ProductsView;
 
-public class ProductsFragment extends Fragment implements ProductsView {
+public class ProductsFragment extends Fragment implements ProductsView, ProductClickListener {
 
     private ProductsPresenter presenter;
 
@@ -53,7 +55,7 @@ public class ProductsFragment extends Fragment implements ProductsView {
     }
 
     private void createProductsRecyclerView() {
-        productsAdapter = new ProductsAdapter(getActivity(), products);
+        productsAdapter = new ProductsAdapter(getActivity(), products, this);
         productsLayoutManager = new LinearLayoutManager(getActivity());
         productsRecyclerView.setLayoutManager(productsLayoutManager);
         productsRecyclerView.setAdapter(productsAdapter);
@@ -78,7 +80,13 @@ public class ProductsFragment extends Fragment implements ProductsView {
     @Override
     public void onError(String message) {
         spinner.setVisibility(View.GONE);
-        Toast.makeText(getActivity(), "Oops! An error occured.",
+        Toast.makeText(getActivity(), "Oops! An error occurred.",
                 Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onClickedProduct(Product product) {
+        // open product view fragment here
+        Log.v(getClass().getSimpleName(), "clicked on product " + product.getId());
     }
 }
