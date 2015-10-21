@@ -5,10 +5,14 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 
 /**
  * Created by Mark on 9/30/2015.
  */
+
+@Parcel
 public class Image {
 
     @SerializedName("id")
@@ -28,10 +32,12 @@ public class Image {
     private long productId;
     @SerializedName("variant_ids")
     @Expose
-    private List<Object> variantIds = new ArrayList<Object>();
+    private List<Integer> variantIds = new ArrayList<Integer>();
     @SerializedName("src")
     @Expose
     private String src;
+
+    public Image() {}
 
     public long getId() {
         return id;
@@ -73,11 +79,11 @@ public class Image {
         this.productId = productId;
     }
 
-    public List<Object> getVariantIds() {
+    public List<Integer> getVariantIds() {
         return variantIds;
     }
 
-    public void setVariantIds(List<Object> variantIds) {
+    public void setVariantIds(List<Integer> variantIds) {
         this.variantIds = variantIds;
     }
 

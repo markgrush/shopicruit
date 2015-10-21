@@ -1,14 +1,17 @@
 package mgrush.shopicruit;
 
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 
 import java.util.List;
 
 import mgrush.shopicruit.endpoint.ShopicruitEndpoint;
+import mgrush.shopicruit.fragments.ProductsFragment;
 import mgrush.shopicruit.model.Product;
 import mgrush.shopicruit.model.Store;
 import mgrush.shopicruit.service.ServiceGenerator;
@@ -24,6 +27,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUpFragment();
+    }
+
+    private void setUpFragment() {
+        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction()
+                .add(R.id.fragment_container, new ProductsFragment());
+        fragmentTransaction.commit();
     }
 
     @Override

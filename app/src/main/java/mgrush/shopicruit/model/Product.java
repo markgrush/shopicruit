@@ -5,9 +5,13 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Mark on 9/30/2015.
  */
+
+@Parcel
 public class Product {
 
     @SerializedName("id")
@@ -49,6 +53,8 @@ public class Product {
     @SerializedName("options")
     @Expose
     private List<Option> options = new ArrayList<Option>();
+
+    public Product() {}
 
     public long getId() {
         return id;

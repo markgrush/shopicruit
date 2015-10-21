@@ -85,8 +85,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         }
 
         @Override
-        public void onClick(View v) {
-            productClickListener.onClickedProduct(product);
+        public void onClick(View view) {
+            productClickListener.onClickedProduct(view, product);
         }
     }
 }

@@ -1,5 +1,7 @@
 package mgrush.shopicruit.listeners;
 
+import android.view.View;
+
 import mgrush.shopicruit.model.Product;
 
 /**
@@ -7,5 +9,5 @@ import mgrush.shopicruit.model.Product;
  */
 public interface ProductClickListener {
 
-    void onClickedProduct(Product product);
+    void onClickedProduct(View view, Product product);
 }

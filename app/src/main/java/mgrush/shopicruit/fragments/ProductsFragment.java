@@ -1,13 +1,18 @@
 package mgrush.shopicruit.fragments;
 
+import android.annotation.TargetApi;
+import android.app.FragmentTransaction;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -85,8 +90,27 @@ public class ProductsFragment extends Fragment implements ProductsView, ProductC
     }
 
     @Override
-    public void onClickedProduct(Product product) {
-        // open product view fragment here
-        Log.v(getClass().getSimpleName(), "clicked on product " + product.getId());
+    public void onClickedProduct(View view, Product product) {
+        Fragment productViewFragment = ProductViewFragment.createFragment(product);
+        setUpTransition(productViewFragment);
+        replaceFragment(productViewFragment);
+    }
+
+    private void replaceFragment(Fragment productViewFragment) {
+        FragmentTransaction fragmentTransaction = getActivity().getFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, productViewFragment)
+                .addToBackStack("transaction");
+        fragmentTransaction.commit();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setUpTransition(Fragment productViewFragment) {
+        this.setExitTransition(
+                TransitionInflater.from(getActivity()).inflateTransition(R.transition.explode)
+        );
+
+        productViewFragment.setEnterTransition(
+                TransitionInflater.from(getActivity()).inflateTransition(R.transition.explode)
+        );
     }
 }

@@ -3,9 +3,13 @@ package mgrush.shopicruit.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 /**
  * Created by Mark on 9/30/2015.
  */
+
+@Parcel
 public class Variant {
 
     @SerializedName("id")
@@ -19,10 +23,10 @@ public class Variant {
     private String option1;
     @SerializedName("option2")
     @Expose
-    private Object option2;
+    private String option2;
     @SerializedName("option3")
     @Expose
-    private Object option3;
+    private String option3;
     @SerializedName("price")
     @Expose
     private String price;
@@ -31,7 +35,7 @@ public class Variant {
     private Integer grams;
     @SerializedName("compare_at_price")
     @Expose
-    private Object compareAtPrice;
+    private String compareAtPrice;
     @SerializedName("sku")
     @Expose
     private String sku;
@@ -58,7 +62,9 @@ public class Variant {
     private Boolean available;
     @SerializedName("featured_image")
     @Expose
-    private Object featuredImage;
+    private String featuredImage;
+
+    public Variant() {}
 
     public long getId() {
         return id;
@@ -88,7 +94,7 @@ public class Variant {
         return option2;
     }
 
-    public void setOption2(Object option2) {
+    public void setOption2(String option2) {
         this.option2 = option2;
     }
 
@@ -96,7 +102,7 @@ public class Variant {
         return option3;
     }
 
-    public void setOption3(Object option3) {
+    public void setOption3(String option3) {
         this.option3 = option3;
     }
 
@@ -120,7 +126,7 @@ public class Variant {
         return compareAtPrice;
     }
 
-    public void setCompareAtPrice(Object compareAtPrice) {
+    public void setCompareAtPrice(String compareAtPrice) {
         this.compareAtPrice = compareAtPrice;
     }
 
@@ -192,7 +198,7 @@ public class Variant {
         return featuredImage;
     }
 
-    public void setFeaturedImage(Object featuredImage) {
+    public void setFeaturedImage(String featuredImage) {
         this.featuredImage = featuredImage;
     }
 

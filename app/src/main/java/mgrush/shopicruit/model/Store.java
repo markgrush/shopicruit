@@ -8,6 +8,7 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by Mark on 9/30/2015.
  */
+
 public class Store {
 
     @SerializedName("products")
