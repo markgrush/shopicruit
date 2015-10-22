@@ -26,6 +26,7 @@ import mgrush.shopicruit.listeners.ProductClickListener;
 import mgrush.shopicruit.model.Product;
 import mgrush.shopicruit.presenters.ProductsPresenter;
 import mgrush.shopicruit.presenters.ProductsPresenterImpl;
+import mgrush.shopicruit.repositories.ProductsRepositoryImpl;
 import mgrush.shopicruit.view.ProductsView;
 
 public class ProductsFragment extends Fragment implements ProductsView, ProductClickListener {
@@ -43,7 +44,7 @@ public class ProductsFragment extends Fragment implements ProductsView, ProductC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        presenter = new ProductsPresenterImpl(this);
+        presenter = new ProductsPresenterImpl(this, new ProductsRepositoryImpl());
     }
 
     @Override
@@ -84,7 +85,6 @@ public class ProductsFragment extends Fragment implements ProductsView, ProductC
 
     @Override
     public void onError(String message) {
-        spinner.setVisibility(View.GONE);
         Toast.makeText(getActivity(), "Oops! An error occurred.",
                 Toast.LENGTH_LONG).show();
     }

@@ -21,29 +21,25 @@ import retrofit.client.Response;
  */
 public class ProductsRepositoryImpl implements ProductsRepository {
 
-    private ProductsPresenter presenter;
-
     private Endpoint endpoint;
     private ShopicruitService shopicruit;
 
-    public ProductsRepositoryImpl(ProductsPresenter presenter) {
-        this.presenter = presenter;
-
+    public ProductsRepositoryImpl() {
         endpoint = new ShopicruitEndpoint();
         shopicruit = ServiceGenerator.createService(ShopicruitService.class, endpoint);
     }
 
     @Override
-    public void requestProducts() {
+    public void requestProducts(final ProductsRepositoryCallback callback) {
         shopicruit.getStore(new Callback<Store>() {
             @Override
             public void success(Store store, Response response) {
-                presenter.setProducts(store.getProducts());
+                callback.onLoadedProducts(store.getProducts());
             }
 
             @Override
             public void failure(RetrofitError error) {
-                presenter.onError(error.getMessage());
+                callback.onLoadedError(error.getMessage());
             }
         });
     }

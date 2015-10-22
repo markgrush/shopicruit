@@ -11,7 +11,4 @@ public interface ProductsPresenter {
 
     void requestProducts();
 
-    void setProducts(List<Product> products);
-
-    void onError(String message);
 }

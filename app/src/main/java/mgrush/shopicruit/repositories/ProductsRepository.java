@@ -9,6 +9,6 @@ import mgrush.shopicruit.model.Product;
  */
 public interface ProductsRepository {
 
-    void requestProducts();
+    void requestProducts(ProductsRepositoryCallback callback);
 
 }
